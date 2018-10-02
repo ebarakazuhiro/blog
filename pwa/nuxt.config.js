@@ -1,9 +1,3 @@
-const routerBase = process.env.DEPLOY_ENV === 'master' ? {
-  router: {
-    base: '/pwa/'
-  }
-} : {}
-
 module.exports = {
   /*
   ** Headers of the page
