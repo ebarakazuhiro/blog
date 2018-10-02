@@ -1,3 +1,9 @@
+const routerBase = process.env.DEPLOY_ENV === 'master' ? {
+  router: {
+    base: '/ebarakazuhiro/blog/pwa'
+  }
+} : {}
+
 module.exports = {
   /*
   ** Headers of the page
@@ -20,6 +26,7 @@ module.exports = {
     name: "PWA",
     lang: 'ja'
   },
+  routerBase,
   /*
   ** Customize the progress bar color
   */
