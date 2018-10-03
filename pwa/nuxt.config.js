@@ -20,7 +20,6 @@ module.exports = {
     name: "PWA",
     lang: 'ja'
   },
-  routerBase,
   /*
   ** Customize the progress bar color
   */
