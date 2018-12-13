@@ -1,33 +1,17 @@
 <template>
   <section class="container">
     <div>
-      <logo/>
-      <h1 class="title">
-        Push notification using Nuxt.js and FCM
-      </h1>
-      <h2 class="subtitle">
-        Push notification using Nuxt.js and FCM
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green">Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey">GitHub</a>
-      </div>
+      <SendForm/>
     </div>
   </section>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import SendForm from '~/components/SendForm'
 
 export default {
   components: {
-    Logo
+    SendForm
   }
 }
 </script>
@@ -42,8 +26,7 @@ export default {
 }
 
 .title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   display: block;
   font-weight: 300;
   font-size: 100px;
