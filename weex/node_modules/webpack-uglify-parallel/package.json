@@ -1,0 +1,28 @@
+{
+  "name": "webpack-uglify-parallel",
+  "version": "0.1.4",
+  "description": "Identical to standard uglify webpack plugin, with an option to build multiple files in parallel",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tradingview/webpack-uglify-parallel.git"
+  },
+  "keywords": [
+    "uglify",
+    "webpack",
+    "parallel"
+  ],
+  "author": "Andrey Povazhnyi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tradingview/webpack-uglify-parallel/issues"
+  },
+  "homepage": "https://github.com/tradingview/webpack-uglify-parallel#readme",
+  "dependencies": {
+    "uglify-js": "^2.6.2",
+    "webpack-core": "^0.6.8"
+  }
+}

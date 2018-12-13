@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="15px" viewBox="0 0 20 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>ic_mail@2x</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="home" transform="translate(-98.000000, -267.000000)" fill="#FFFFFF">
+            <path d="M108,273.315789 L116.888889,267 L99.1111111,267 L108,273.315789 Z M108.666574,275.47386 C108.469074,275.613947 108.234722,275.684211 108,275.684211 C107.765648,275.684211 107.530926,275.613947 107.333426,275.47386 L100.222222,270.421053 L98,268.842105 L98,280.947368 C98,281.52886 98.4976852,282 99.1111111,282 L116.888889,282 C117.502685,282 118,281.52886 118,280.947368 L118,268.842105 L115.777778,270.421053 L108.666574,275.47386 Z" id="ic_mail"></path>
+        </g>
+    </g>
+</svg>
