@@ -76,6 +76,17 @@ const useEslint = config.dev.useEslint ? [createLintingRule()] : []
  * Plugins for webpack configuration.
  */
 const plugins = [
+  /**
+   * Plugin: webpack.DefinePlugin
+   * Description: The DefinePlugin allows you to create global constants which can be configured at compile time. 
+   *
+   * See: https://webpack.js.org/plugins/define-plugin/
+   */
+  new webpack.DefinePlugin({
+    'process.env': {
+      'NODE_ENV': config.dev.env
+    }
+  }),
   /*
    * Plugin: BannerPlugin
    * Description: Adds a banner to the top of each generated chunk.
@@ -137,8 +148,7 @@ const webConfig = {
                 el.staticStyle = `$processStyle(${el.staticStyle})`
                 el.styleBinding = `$processStyle(${el.styleBinding})`
               }
-            }]
-            
+            }],
           })
         }],
         exclude: config.excludeModuleReg
@@ -187,7 +197,7 @@ const weexConfig = {
         test: /\.vue(\?[^?]+)?$/,
         use: [{
           loader: 'weex-loader',
-          options: vueLoaderConfig({useVue: false})
+          options: vueLoaderConfig({useVue: false}),
         }],
         exclude: config.excludeModuleReg
       }

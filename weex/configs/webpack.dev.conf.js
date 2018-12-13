@@ -9,7 +9,7 @@ const ip = require('ip').address();
 /**
  * Webpack Plugins
  */
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin-for-multihtml');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
@@ -41,6 +41,10 @@ const postMessageToOpenPage =  (entry) => {
 
 const openPage = postMessageToOpenPage(commonConfig[0].entry);
 
+// hotreload server for playground App
+const wsServer = require('./hotreload');
+let wsTempServer = null
+
 /**
  * Generate multiple entrys
  * @param {Array} entry 
@@ -51,6 +55,7 @@ const generateHtmlWebpackPlugin = (entry) => {
   entrys = entrys.filter(entry => entry !== 'vendor' );
   const htmlPlugin = entrys.map(name => {
     return new HtmlWebpackPlugin({
+      multihtmlCache: true,
       filename: name + '.html',
       template: helper.rootNode(`web/index.html`),
       isDevServer: true,
@@ -158,6 +163,8 @@ const weexConfig = webpackMerge(commonConfig[1], {
 webpack(weexConfig, (err, stats) => {
   if (err) {
     console.err('COMPILE ERROR:', err.stack)
+  } else {
+    wsTempServer && wsTempServer.sendSocketMessage()
   }
 })
 
@@ -172,6 +179,7 @@ module.exports = new Promise((resolve, reject) => {
       // add port to devServer config
       devWebpackConfig.devServer.port = port
       devWebpackConfig.devServer.public = `${ip}:${port}`
+      devWebpackConfig.devServer.openPage += `&wsport=${port+1}`
       // Add FriendlyErrorsPlugin
       devWebpackConfig.plugins.push(new FriendlyErrorsPlugin({
         compilationSuccessInfo: {
@@ -183,7 +191,7 @@ module.exports = new Promise((resolve, reject) => {
         ? utils.createNotifierCallback()
         : undefined
       }))
-
+      wsTempServer = new wsServer(port+1)
       resolve(devWebpackConfig)
     }
   })
