@@ -1,8 +1,25 @@
 <template>
   <div class="send__form">
-    <form @submit.prevent="sendMessage">
+    <div class="send__form-title">何か送ってみてね</div>
+    <form
+      class="form__box"
+      @submit.prevent="sendMessage"
+    >
       <input
         name="text"
+        class="form__box-title"
+      >
+      <input
+        name="text"
+        class="form__box-text"
+      >
+      <input
+        name="text"
+        class="form__box-url"
+      >
+      <input
+        name="image"
+        class="form__box-image"
       >
       <button class="send__form-submit">send</button>
     </form>
@@ -26,16 +43,21 @@ export default {
             .getToken()
             .then(function(currentToken) {
               console.log(currentToken)
-              if (currentToken) {
-                sendTokenToServer(currentToken)
-                updateUIForPushEnabled(currentToken)
-              } else {
-                // Show permission request.
-                console.log('No Instance ID token available. Request permission to generate one.')
-                // Show permission UI.
-                updateUIForPushPermissionRequired()
-                setTokenSentToServer(false)
+              const headers = {
+                headers: {
+                  'Content-type': 'application/json',
+                  Authorization: ''
+                }
               }
+              let data = {
+                to: currentToken,
+                notification: {
+                  title: 'nana music',
+                  body: 'nana musicのwebサイトへようこそ',
+                  click_action: ''
+                }
+              }
+              axios.post('https://fcm.googleapis.com/fcm/send', data, headers)
             })
             .catch(function(err) {
               console.log('not', err)
@@ -49,8 +71,28 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .send__form {
   display: flex;
+  flex-direction: column;
+  &-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+}
+
+.form__box {
+  display: flex;
+  flex-direction: column;
+  &-title,
+  &-text,
+  &-url {
+    width: 300px;
+    height: 30px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 0 5px;
+  }
 }
 </style>

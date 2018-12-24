@@ -1,4 +1,5 @@
 const pkg = require('./package')
+const path = require('path')
 
 module.exports = {
   mode: 'spa',
@@ -18,22 +19,19 @@ module.exports = {
   loading: { color: '#fff' },
 
   /*
-  ** Global CSS
-  */
-  css: [],
-  /*
   ** Plugins to load before mounting the App
   */
   plugins: [],
-
   /*
   ** Nuxt.js modules
   */
   modules: [
     // Doc: https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios',
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    'nuxt-sass-resources-loader'
   ],
+  sassResources: ['@/assets/scss/main.scss'],
   /*
   ** Axios module configuration
   */

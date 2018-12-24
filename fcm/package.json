@@ -18,6 +18,7 @@
     "cross-env": "^5.2.0",
     "express": "^4.16.3",
     "firebase": "^5.7.0",
+    "node-sass": "^4.11.0",
     "nuxt": "^2.0.0",
     "sass-loader": "^7.1.0"
   },
@@ -29,6 +30,7 @@
     "eslint-plugin-prettier": "2.6.2",
     "eslint-plugin-vue": "^4.0.0",
     "nodemon": "^1.11.0",
+    "nuxt-sass-resources-loader": "^2.0.5",
     "prettier": "1.14.3"
   }
 }
