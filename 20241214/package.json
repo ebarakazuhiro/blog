@@ -14,8 +14,9 @@
   "contributes": {
     "commands": [
       {
-        "command": "20241214.helloWorld",
-        "title": "Hello World"
+        "command": "catCoding.start",
+        "title": "Start new cat coding session",
+        "category": "Cat Coding"
       }
     ]
   },
@@ -31,7 +32,6 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@esbuild-plugins/node-modules-polyfill": "^0.2.2",
     "@types/mocha": "^10.0.10",
     "@types/node": "20.x",
     "@types/vscode": "^1.96.0",
@@ -43,5 +43,6 @@
     "typescript": "^5.7.2",
     "vite": "^6.0.3",
     "vite-plugin-node": "^4.0.0"
-  }
+  },
+  "type": "module"
 }
