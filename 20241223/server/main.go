@@ -7,6 +7,12 @@ import (
 	"github.com/gorilla/websocket"
 )
 
+// メッセージ構造体
+type Message struct {
+	Username string `json:"username"`
+	Text     string `json:"text"`
+}
+
 var upgrader = websocket.Upgrader{
 	CheckOrigin: func(r *http.Request) bool {
 		return true
@@ -14,7 +20,7 @@ var upgrader = websocket.Upgrader{
 }
 
 var clients = make(map[*websocket.Conn]bool)
-var broadcast = make(chan string)
+var broadcast = make(chan Message)
 
 func handleConnections(w http.ResponseWriter, r *http.Request) {
 	ws, err := upgrader.Upgrade(w, r, nil)
@@ -28,7 +34,7 @@ func handleConnections(w http.ResponseWriter, r *http.Request) {
 	log.Println("New client connected")
 
 	for {
-		var msg string
+		var msg Message
 		err := ws.ReadJSON(&msg)
 		if err != nil {
 			log.Printf("Error reading message: %v", err)
